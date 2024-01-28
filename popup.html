@@ -11,7 +11,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f8f8f8;
   width: 300px;
-  min-height: 300px;
+  text-align: center;
 }
 
 #heading {
@@ -38,46 +38,32 @@ body {
   font-size: 16px;
   margin-bottom: 10px;
   box-sizing: border-box;
+  border-radius: 5px 5px 5px 5px;
+  font-weight: 500;
 }
 
-/* Style for the output area */
-#output {
-  border: 1px solid #ddd;
-  padding: 15px;
-  min-height: 150px; /* Increased height */
-  overflow-y: auto; /* Scroll vertically for overflow */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-  background-color: white;
-  color: black;
+#reset{
+  font-family: 'Outfit',Sans-serif;
   font-size: 16px;
-  word-wrap: break-word; /* Ensure long words are broken and wrapped to the next line */
-  white-space: pre-wrap; /* Wrap text and preserve whitespace and line breaks */
+  font-weight: 600;
+  background-color: #ff4c2b;
+  border-radius: 5px 5px 5px 5px;
+  color: #fff;
+  border-color: #ff4c2b;
+  height: 60px;
+  width: 130px;
 }
-
-#output::-webkit-scrollbar {
-  width: 10px;
-}
-
-#output::-webkit-scrollbar-thumb {
-  background: #cccccc;
-  border-radius: 10px;
-}
-
-#output::-webkit-scrollbar-thumb:hover {
-  background: #b3b3b3;
-}
-
   </style>
 </head>
 <body>
   <div id="font-tester-container">
     <div id="heading">Font Viewer and Tester</div>
-    <input type="text" id="text-input" placeholder="Type your text here or paste a paragraph">
     <select id="font-selector">
 
     </select>
-    <div id="output"></div>
+    <button id="reset">Reset Font</button>
   </div>
+
   <script src="popup.js"></script>
 </body>
 </html>
