@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const fontSelector = document.getElementById('font-selector');
-  const output = document.getElementById('output');
-  const textInput = document.getElementById('text-input');
+  const resetButton = document.getElementById('reset');
 
   const fonts = [
     "Arial", "Verdana", "Helvetica", 
@@ -12,19 +11,22 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
 
   fonts.forEach(font => {
-    let option = document.createElement('option');
-    option.value = font;
-    option.innerText = font;
-    fontSelector.appendChild(option);
+      let option = document.createElement('option');
+      option.value = font;
+      option.innerText = font;
+      fontSelector.appendChild(option);
   });
 
   fontSelector.addEventListener('change', function() {
-    const selectedFont = fontSelector.value;
-    output.style.fontFamily = selectedFont;
-    output.innerText = textInput.value;
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.sendMessage(tabs[0].id, {font: fontSelector.value});
+      });
   });
 
-  textInput.addEventListener('input', function() {
-    output.innerText = textInput.value;
+  resetButton.addEventListener('click', function() {
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.sendMessage(tabs[0].id, {reset: true});
+      });
   });
 });
+
